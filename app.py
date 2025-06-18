@@ -726,3 +726,15 @@ async def health_check():
 
 if __name__ == "__main__":
     uvicorn.run("app:app", host="0.0.0.0", port=8000, reload=True) 
+
+
+
+
+from fastapi.responses import HTMLResponse
+
+@app.get("/", response_class=HTMLResponse)
+def read_root():
+    return """
+    <h2>TDS Virtual TA is Running ✅</h2>
+    <p>Visit <a href='/docs'>/docs</a> to use the API.</p>
+    """
